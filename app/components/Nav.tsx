@@ -6,26 +6,28 @@ import Image from "next/image";
 
 export default function Nav({ user }: Session) {
   return (
-    <div>
+    <nav className="flex justify-between items-center py-8">
       <h1>Styled</h1>
-      <ul>
-        <li>Products</li>
+      <ul className="flex items-center gap-12">
         {!user && (
-          <li>
+          <li className="bg-teal-600 text-white py-2 px-4 rounded-md">
             <button onClick={() => signIn()}>Sign In</button>
           </li>
         )}
         {user && (
-          <li>
-            <Image
-              src={user?.image as string}
-              alt="user"
-              width={50}
-              height={50}
-            />
-          </li>
+          <>
+            <li>
+              <Image
+                className="rounded-full first-line:"
+                src={user?.image as string}
+                alt="user"
+                width={48}
+                height={48}
+              />
+            </li>
+          </>
         )}
       </ul>
-    </div>
+    </nav>
   );
 }
