@@ -4,7 +4,7 @@ import { loadStripe, StripeElementsOptions } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { useCartStore } from "@/store";
 import { useState, useEffect } from "react";
-import {useRouter} from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -12,11 +12,11 @@ const stripePromise = loadStripe(
 
 export default function Checkout() {
   const cartStore = useCartStore();
-                              const router = useRouter()
+  const router = useRouter();
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    //Create A paymentIntent as soon as the  Page Loads Up
+    //Create a Payment as  soon as the page loads
     fetch("/api/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -24,19 +24,22 @@ export default function Checkout() {
         items: cartStore.cart,
         payment_intent_id: cartStore.paymentIntent,
       }),
-    }).then((res) => {
-         if(res.status === 403){
-          return router.push("/api/auth/signin")
-         }
-         return res.json()
-    }).then((data) => {
-      console.log(data)
     })
+      .then((res) => {
+        if (res.status === 403) {
+          return router.push("/api/auth/signin");
+        }
+        return res.json();
+        // SET CLIENT SECRET and  The payment associated with it
+      })
+      .then((data) => {
+        console.log(data);
+      });
   }, []);
 
   return (
     <div>
-      <h1>Checkout</h1>
+      <h1> Checkout</h1>
     </div>
-  )
+  );
 }

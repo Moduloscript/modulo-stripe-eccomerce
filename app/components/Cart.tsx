@@ -7,7 +7,7 @@ import { IoAddCircle, IoRemoveCircle } from "react-icons/io5";
 import { TiArrowBack } from "react-icons/ti";
 import basket from "@/public/basket.png";
 import { motion, AnimatePresence } from "framer-motion";
-import Checkout from "./CheckOut";
+import Checkout from "./Checkout";
 
 export default function Cart() {
   const cartStore = useCartStore();
