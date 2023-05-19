@@ -30,7 +30,6 @@ export default async function handler(
   }
   // Extract data from the body
   const { items, payment_intent_id } = req.body;
-          console.log(items, payment_intent_id)
   //Create the order data
   const orderData = {
     user: { connect: { id: userSession.user?.id } },
