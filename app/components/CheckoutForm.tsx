@@ -9,6 +9,7 @@ import {
 import formatPrice from "@/util/PriceFormat";
 import { useCartStore } from "@/store";
 
+
 export default function CheckoutForm({
   clientSecret,
 }: {
@@ -22,6 +23,7 @@ export default function CheckoutForm({
     return acc + item.unit_amount! * item.quantity!;
   }, 0);
   const formattedPrice = formatPrice(totalPrice);
+  
 
   useEffect(() => {
     if (!stripe) {
@@ -50,7 +52,7 @@ export default function CheckoutForm({
       });
   };
   return (
-<form className="text-gray-600" onSubmit={handleSubmit} id="payment-form">
+<form className="text-gray-300" onSubmit={handleSubmit} id="payment-form">
       <PaymentElement id="payment-element" options={{ layout: "tabs" }} />
         <h1 className="py-4 text-sm font-bold">Total: {formattedPrice}</h1>
       <button
