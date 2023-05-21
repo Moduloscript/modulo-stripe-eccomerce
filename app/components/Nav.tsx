@@ -44,6 +44,7 @@ export default function Nav({ user }: Session) {
         )}
         {user && (
           <>
+        <Link href={"/dashboard"}>
             <li>
               <Image
                 className="rounded-full first-line"
@@ -53,6 +54,7 @@ export default function Nav({ user }: Session) {
                 height={36}
               />
             </li>
+            </Link>
           </>
         )}
       </ul>
