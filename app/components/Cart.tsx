@@ -1,5 +1,7 @@
 "use client";
 
+import Checkout from "./Checkout";
+import OrderConfirmed from "./OrderConfirmed";
 import Image from "next/image";
 import { useCartStore } from "@/store";
 import formatPrice from "@/util/PriceFormat";
@@ -7,8 +9,7 @@ import { IoAddCircle, IoRemoveCircle } from "react-icons/io5";
 import { TiArrowBack } from "react-icons/ti";
 import basket from "@/public/basket.png";
 import { motion, AnimatePresence } from "framer-motion";
-import Checkout from "./Checkout";
-import OrderConfirmed from "./OrderConfirmed";
+
 
 export default function Cart() {
   const cartStore = useCartStore();
